@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build: .
+    platform: linux/amd64
+    image: softvence/tomsliv-frontend:latest
+    container_name: tomsliv-frontend
+    environment:
+      - VITE_API_ENDPOINT=http://54.206.137.144:3000
+      - VITE_AI_API_BASE_URL=https://tomsliv-ai.onrender.com
+    ports:
+      - "4173:4173"
+    restart: always

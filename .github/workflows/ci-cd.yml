@@ -1,0 +1,56 @@
+name: Build & Deploy Frontend
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci --include=optional
+
+      - name: Build project
+        run: npm run build
+        env:
+          VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
+          VITE_AI_API_BASE_URL: ${{ secrets.VITE_AI_API_BASE_URL }}
+          VITE_STRIPE_PUBLIC_KEY: ${{ secrets.VITE_STRIPE_PUBLIC_KEY }}
+
+      - name: Upload build files to VPS (temp)
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          source: "dist/"
+          target: "/home/${{ secrets.VPS_USER }}/deploy-temp"
+
+      - name: Deploy to /var/www/html
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script: |
+            sudo mkdir -p /var/www/html
+            sudo rm -rf /var/www/html/*
+
+            sudo mv ~/deploy-temp/* /var/www/html/
+
+            sudo chown -R 1000:1000 /var/www/html
+            sudo chmod -R 755 /var/www/html
+
+            sudo rm -rf ~/deploy-temp

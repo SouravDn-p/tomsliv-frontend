@@ -1,0 +1,26 @@
+export const JOB_TEMPLATES = [
+  {
+    name: "General Dairy Role (Full Sample)",
+    data: {
+      title: "Farm Assistant / Herd Manager",
+      role: "Farm Assistant",
+      jobType: "FULL_TIME",
+      locationType: "Single farm",
+      location: "Waikato",
+      farmSize: "250",
+      herdSize: "600",
+      onFarmStaff: "3.5",
+      numberOfPositions: "1",
+      requiredExperience: "2",
+      description: "We are seeking a motivated team member to join our dairy operation. Responsibilities include daily milking, calf rearing assistance, and general farm maintenance. We pride ourselves on animal welfare and efficient pasture management.",
+      benefits: "Comfortable 3-bedroom accommodation provided. Regular training opportunities and a supportive team environment.",
+      hoursPerWeek: "45",
+      roster: "5 days on, 2 days off",
+      remunerationPaidBy: "man",
+      remunerationType: "Yearly",
+      remunerationStart: "60000",
+      remunerationEnd: "75000",
+      totalPackageValue: "80000",
+    },
+  },
+];

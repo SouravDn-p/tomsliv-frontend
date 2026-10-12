@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import "tailwindcss";
+@import "swiper/css";
+
+@theme {
+  /* 🌑 Website Base Colors */
+  --color-website-black: #212a31;
+  --color-website-darkGray: #2e3944;
+  --color-website-lightGray: #E9EAEA;
+  --color-website-green: #124e66;
+  --color-website-lightGreen: #748d92;
+
+  /* 🖋 Typography */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Lora", serif;
+
+  /* 🎨 Brand & UI Colors */
+  --color-primary-blue: #1868C9;
+  --color-medium-blue: #205CA5;
+  --color-light-blue: #4E93E8;
+  --color-paragraph-gray: #525252;
+  --color-paragraph-secondary-gray: #6E7272;
+  --color-destructive: #E33A4B;
+
+
+  --color-subheading-gray: #0A0A0A;
+  --color-main-heading-black: #0A0A0A;
+  --color-primary-border: #b2ddff;
+  --color-primary-Darkcyan: #338A92;
+  --color-background-lightBlue: #EBF3F8;
+  --color-border-primary: #E5E5E5;
+  --color-secondary-CobaltBlue: #205CA5;
+  --color-background-lightgray: #FAFAFA;
+  --color-background-darkBlue: #0D2745;
+  --color-divider-lightBlue: #BACCE3;
+
+
+
+
+  /* 🪄 Card Background Gradient */
+  --color-card-background: linear-gradient(...), rgba(12, 16, 34, 0.6);
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
