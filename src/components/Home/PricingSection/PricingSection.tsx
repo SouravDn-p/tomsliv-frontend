@@ -158,7 +158,7 @@ const PricingSection = ({ className }: PricingSectionProps) => {
             <div className="mb-8">
               <div className="flex items-baseline gap-1">
                 <span className="text-4xl font-bold text-website-black">
-                  $250
+                  {offerDetails ? `$${offerDetails.normalPrice}` : ""}
                 </span>
                 <span className="text-paragraph-secondary-gray">/ advert</span>
               </div>
